@@ -3,7 +3,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,.svg}'],
   theme: {
     extend: {
       fontFamily: {
@@ -11,5 +11,11 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/line-clamp'),
+  ],
 };
