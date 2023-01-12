@@ -1,8 +1,9 @@
 import { Beer } from '../../common';
+import { Link } from 'react-router-dom';
 
 export const BeerCard = ({ beer }: { beer: Beer }) => {
   return (
-    <a href={`/${beer.id}`} className="group">
+    <Link to={`/beers/${beer.id}`} className="group">
       <div className="bg-gray-100 p-4 rounded-lg">
         <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden sm:aspect-w-1 sm:aspect-h-1">
           <img
@@ -19,6 +20,6 @@ export const BeerCard = ({ beer }: { beer: Beer }) => {
       <p className="mt-1 text-sm italic line-clamp-2 text-gray-500">
         {beer.description}
       </p>
-    </a>
+    </Link>
   );
 };
