@@ -18,7 +18,7 @@ export const BeerCard = ({ beer }: { beer: Beer }) => {
         <p>{beer.abv}%</p>
       </div>
       <p className="mt-1 text-sm italic line-clamp-2 text-gray-500">
-        {beer.description}
+        {beer.tagline}
       </p>
     </Link>
   );

@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Error } from './common';
 import './index.css';
 import { BeerList } from './beer-list';
+import { BeerDetails } from './beer-details';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <BeerList />,
+        errorElement: <Error />,
       },
       {
         path: 'beers',
@@ -20,7 +22,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'beers/:beerId',
-        element: <p>single beer</p>,
+        element: <BeerDetails />,
+        errorElement: <Error />,
       },
     ],
   },

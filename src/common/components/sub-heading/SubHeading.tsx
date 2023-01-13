@@ -1,24 +1,29 @@
+import { Link } from 'react-router-dom';
+
 export const SubHeading = ({
   title,
+  subTitle,
   backNav,
 }: {
   title: string;
-  backNav?: { label: string };
+  subTitle?: string;
+  backNav?: { label: string; to: string };
 }) => {
   return (
     <div className="my-4">
       {backNav && (
-        <a
-          href="#"
-          className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
+        <Link
+          to={backNav.to}
+          className="hidden text-sm font-semibold text-purple-600 hover:text-purple-500 sm:block"
         >
           <span aria-hidden="true">&larr; </span>
           {backNav.label}
-        </a>
+        </Link>
       )}
-      <h2 className="text-2xl xfont-semibold tracking-tight text-gray-600">
+      <h2 className="text-2xl font-semibold tracking-tight text-gray-600">
         {title}
       </h2>
+      {subTitle && <p className="text-gray-500">{subTitle}</p>}
     </div>
   );
 };

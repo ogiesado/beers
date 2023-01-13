@@ -1,5 +1,4 @@
 import { HeartIcon } from '@heroicons/react/24/outline';
-import { Ping } from '../Ping';
 import logo from './assets/beer.svg';
 
 export const Header = () => {
