@@ -14,11 +14,7 @@ export const BeerList = () => {
 
   return (
     <>
-      {!hasBeers && loadingBeers ? (
-        <div className="h-5 w-[100px] my-4 bg-slate-200 rounded"></div>
-      ) : (
-        <SubHeading title="All Beers" />
-      )}
+      <SubHeading loading={!hasBeers && loadingBeers} title="All Beers" />
 
       <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6  sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
         {hasBeers

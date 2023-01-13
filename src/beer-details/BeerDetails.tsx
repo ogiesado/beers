@@ -1,34 +1,43 @@
 import { useEffect } from 'react';
 import { HeartIcon } from '@heroicons/react/24/outline';
-import { useParams } from 'react-router-dom';
-import { SubHeading } from '../common';
+import { useParams, useNavigate } from 'react-router-dom';
+import { BEERS_ROUTE, SubHeading, Error } from '../common';
 import { useBeerService } from './services';
 import { BeerContents, BeerImage, BeerSection } from './components';
 
 export const BeerDetails = () => {
   const { beerId } = useParams();
 
-  const { beer, loading, getBeer } = useBeerService();
+  const navigate = useNavigate();
+
+  const { beer, loading, notFound, errorOccurred, getBeer } = useBeerService();
 
   useEffect(() => {
     if (beerId) getBeer(beerId);
   }, [beerId]);
 
+  useEffect(() => {
+    if (errorOccurred) navigate(BEERS_ROUTE);
+  }, [errorOccurred]);
+
+  if (errorOccurred) return null;
+
+  if (notFound)
+    return (
+      <Error
+        title="Not found"
+        message="Sorry, the beer you are looking for was not found."
+      />
+    );
+
   return (
     <>
-      {loading && (
-        <>
-          <div className="h-6 w-[150px] my-4 bg-slate-200 rounded"></div>
-          <div className="mt-2 h-3 w-[300px] my-4 bg-slate-200 rounded"></div>
-        </>
-      )}
-      {beer && !loading && (
-        <SubHeading
-          title={beer.name}
-          subTitle={beer.tagline}
-          backNav={{ label: 'All Beers', to: '/beers' }}
-        />
-      )}
+      <SubHeading
+        title={beer?.name}
+        subTitle={beer?.tagline}
+        loading={loading}
+        backNav={{ label: 'All Beers', to: '/beers' }}
+      />
 
       <div className="flex flex-col lg:flex-row">
         <div className="lg:basis-1/3">

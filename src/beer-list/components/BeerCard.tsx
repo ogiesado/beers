@@ -1,9 +1,9 @@
-import { Beer } from '../../common';
+import { Beer, BEERS_ROUTE } from '../../common';
 import { Link } from 'react-router-dom';
 
 export const BeerCard = ({ beer }: { beer: Beer }) => {
   return (
-    <Link to={`/beers/${beer.id}`} className="group">
+    <Link to={`${BEERS_ROUTE}/${beer.id}`} className="group">
       <div className="bg-gray-100 p-4 rounded-lg">
         <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden sm:aspect-w-1 sm:aspect-h-1">
           <img
