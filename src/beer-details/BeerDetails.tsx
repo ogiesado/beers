@@ -20,6 +20,10 @@ export const BeerDetails = () => {
     if (errorOccurred) navigate(BEERS_ROUTE);
   }, [errorOccurred]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (errorOccurred) return null;
 
   if (notFound)

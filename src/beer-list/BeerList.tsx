@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { SubHeading } from '../common';
 import { Pagination, BeerCard, BeerCardLoading } from './index';
 import { useBeerList } from './useBeerList';
@@ -11,6 +12,10 @@ export const BeerList = () => {
     nextPage,
     previousPage,
   } = useBeerList();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [beers]);
 
   return (
     <>
