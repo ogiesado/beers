@@ -1,7 +1,10 @@
 import { HeartIcon } from '@heroicons/react/24/outline';
+import { useFavourites } from '../../providers';
 import logo from './assets/beer.svg';
 
 export const Header = () => {
+  const { favourites } = useFavourites();
+
   return (
     <header className="py-6 flex border-b border-b-gray-200">
       <a href="/" className="flex items-center">
@@ -13,9 +16,9 @@ export const Header = () => {
         href="/favourites"
         className="relative p-2 flex items-center ml-auto text-purple-500 hover:text-purple-700 lg:p-0 "
       >
-        <HeartIcon className="h-6 w-6 animate-bounce" aria-hidden="true" />
-        <span className="animate-bounce sr-only lg:not-sr-only">
-          Favourites
+        <HeartIcon className="h-6 w-6" aria-hidden="true" />
+        <span className="sr-only lg:not-sr-only">
+          Favourites ({favourites.length})
         </span>
       </a>
     </header>

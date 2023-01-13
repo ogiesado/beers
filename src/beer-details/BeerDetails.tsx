@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { HeartIcon } from '@heroicons/react/24/outline';
 import { useParams, useNavigate } from 'react-router-dom';
-import { BEERS_ROUTE, SubHeading, Error } from '../common';
+import { BEERS_ROUTE, SubHeading, Error, useFavourites } from '../common';
 import { useBeerService } from './services';
 import { BeerContents, BeerImage, BeerSection } from './components';
+import { FavouriteButton } from './components/FavouriteButton';
 
 export const BeerDetails = () => {
   const { beerId } = useParams();
@@ -11,6 +11,8 @@ export const BeerDetails = () => {
   const navigate = useNavigate();
 
   const { beer, loading, notFound, errorOccurred, getBeer } = useBeerService();
+
+  const { toggleFavourite, addFavourite, isFavourite } = useFavourites();
 
   useEffect(() => {
     if (beerId) getBeer(beerId);
@@ -80,13 +82,10 @@ export const BeerDetails = () => {
               <div className="animate-pulse w-full lg:w-1/2 h-12 bg-slate-200 rounded-lg"></div>
             )}
             {beer && !loading && (
-              <button
-                type="submit"
-                className="flex w-full lg:w-1/2 items-center justify-center rounded-md border border-transparent bg-purple-600 py-3 px-8 text-base font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
-              >
-                <HeartIcon className="h-6 w-6" aria-hidden="true" />
-                Add to favourites
-              </button>
+              <FavouriteButton
+                isFavourite={isFavourite(beer.id)}
+                onClick={() => toggleFavourite(beer)}
+              />
             )}
           </div>
         </div>
