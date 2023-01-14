@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { HeartIcon } from '@heroicons/react/20/solid';
-import { Beer, BEERS_ROUTE } from '../../../common';
+import { Beer, BEERS_ROUTE, FAVOURITES_ROUTE } from '../../../common';
 
 export const Favourites = ({
   beers,
@@ -25,6 +25,9 @@ export const Favourites = ({
               />
               <Link
                 to={`${BEERS_ROUTE}/${beer.id}`}
+                state={{
+                  backNav: { label: 'Favourites', to: FAVOURITES_ROUTE },
+                }}
                 className="absolute inset-0 focus:outline-none"
               >
                 <span className="sr-only">View details for {beer.name}</span>

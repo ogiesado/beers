@@ -1,4 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+export interface BackNav {
+  label: string;
+  to: string;
+}
 
 export const SubHeading = ({
   title,
@@ -9,8 +13,14 @@ export const SubHeading = ({
   title?: string;
   loading?: boolean;
   subTitle?: string;
-  backNav?: { label: string; to: string };
+  backNav?: BackNav;
 }) => {
+  const { state } = useLocation();
+
+  if (state && 'backNav' in state) {
+    backNav = state.backNav as BackNav;
+  }
+
   if (loading) {
     return (
       <>
