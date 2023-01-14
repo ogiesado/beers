@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { ApiBeer, Beer, BEERS_API, mapApiBeerToBeer } from '../../common';
+import { ApiBeer, Beer, BEERS_API, mapApiBeerToBeer } from '../../../common';
 
-export const useBeerService = () => {
+export const useBeersService = () => {
   const [beers, setBeers] = useState<Beer[]>([]);
   const [errorOccurred, setErrorOccurred] = useState(false);
 

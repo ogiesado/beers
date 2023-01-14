@@ -5,7 +5,7 @@ import {
   Beer,
   BEERS_API,
   mapApiBeerToBeer,
-} from '../../common';
+} from '../../../common';
 
 export const useBeerService = () => {
   const [beer, setBeer] = useState<Beer | null>(null);

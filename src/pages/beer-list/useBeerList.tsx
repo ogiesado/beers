@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useBeerService } from './index';
+import { useBeersService } from './index';
 
 export const useBeerList = () => {
   const {
@@ -10,7 +10,7 @@ export const useBeerList = () => {
     hasPreviousPage,
     nextPage,
     previousPage,
-  } = useBeerService();
+  } = useBeersService();
 
   useEffect(() => {
     refresh();

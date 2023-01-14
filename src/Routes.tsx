@@ -1,28 +1,33 @@
 import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Error } from './common';
+import { BEERS_ROUTE, Error, FAVOURITES_ROUTE, HOME_ROUTE } from './common';
 import './index.css';
-import { BeerList } from './beer-list';
-import { BeerDetails } from './beer-details';
+import { BeerDetails } from './pages/beer-details';
+import { FavouriteList, BeerList } from './pages';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: HOME_ROUTE,
     element: <App />,
     errorElement: <Error />,
     children: [
       {
-        path: '/',
+        path: HOME_ROUTE,
         element: <BeerList />,
         errorElement: <Error />,
       },
       {
-        path: 'beers',
+        path: BEERS_ROUTE,
         element: <BeerList />,
       },
       {
-        path: 'beers/:beerId',
+        path: `${BEERS_ROUTE}/:beerId`,
         element: <BeerDetails />,
+        errorElement: <Error />,
+      },
+      {
+        path: FAVOURITES_ROUTE,
+        element: <FavouriteList />,
         errorElement: <Error />,
       },
     ],

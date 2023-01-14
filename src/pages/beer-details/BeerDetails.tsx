@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { BEERS_ROUTE, SubHeading, Error, useFavourites } from '../common';
+import { BEERS_ROUTE, SubHeading, Error, useFavourites } from '../../common';
 import { useBeerService } from './services';
 import { BeerContents, BeerImage, BeerSection } from './components';
 import { FavouriteButton } from './components/FavouriteButton';

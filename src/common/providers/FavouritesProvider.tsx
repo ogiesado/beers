@@ -3,12 +3,14 @@ import { Beer } from '..';
 
 export const FavouritesContext = createContext<{
   favourites: Beer[];
+  hasFavourites: boolean;
   toggleFavourite: (beer: Beer) => void;
   addFavourite: (beer: Beer) => void;
   removeFavourite: (beerId: number) => void;
   isFavourite: (beerId: number) => boolean;
 }>({
   favourites: [],
+  hasFavourites: false,
   toggleFavourite: () => undefined,
   addFavourite: () => undefined,
   removeFavourite: () => undefined,
@@ -46,10 +48,13 @@ export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
     else addFavourite(beer);
   };
 
+  const hasFavourites = favourites.length > 0;
+
   return (
     <Provider
       value={{
         favourites,
+        hasFavourites,
         addFavourite,
         removeFavourite,
         isFavourite,
