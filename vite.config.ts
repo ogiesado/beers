@@ -1,7 +1,24 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    port: 5173,
+  },
   plugins: [react()],
-})
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/utils/test/test-setup.ts',
+    // you might want to disable it, if you don't have tests that rely on CSS
+    // since parsing CSS is slow
+    css: true,
+    api: {
+      port: 5178,
+    },
+  },
+});
