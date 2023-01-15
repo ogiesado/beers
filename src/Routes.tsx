@@ -1,14 +1,13 @@
-import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { BEERS_ROUTE, Error, FAVOURITES_ROUTE, HOME_ROUTE } from './common';
 import './index.css';
 import { BeerDetails } from './pages/beer-details';
-import { FavouriteList, BeerList } from './pages';
+import { FavouriteList, BeerList, Home } from './pages';
 
 const router = createBrowserRouter([
   {
     path: HOME_ROUTE,
-    element: <App />,
+    element: <Home />,
     errorElement: <Error />,
     children: [
       {

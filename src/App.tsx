@@ -1,13 +1,14 @@
-import { Header } from './common';
-import { Outlet } from 'react-router-dom';
+import React from 'react';
+import { Routes } from './Routes';
+import './index.css';
+import { FavouritesProvider } from './common/providers';
 
-function App() {
+export const App = () => {
   return (
-    <div className="container mx-auto p-4 sm:p-0">
-      <Header />
-      <Outlet />
-    </div>
+    <React.StrictMode>
+      <FavouritesProvider>
+        <Routes />
+      </FavouritesProvider>
+    </React.StrictMode>
   );
-}
-
-export default App;
+};
