@@ -14,3 +14,8 @@
 - Install npm dependencies `npm install`
 - Start the application by running `npm run dev`
 - Open your chrome browser to access the application at http://localhost:5173/
+
+### Hot to run tests
+
+- Run `npm run coverage` (for tests)
+- Run `npm run test` (to watch tests)
