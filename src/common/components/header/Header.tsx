@@ -8,7 +8,7 @@ export const Header = () => {
   const { favourites } = useFavourites();
 
   return (
-    <header className="py-6 flex border-b border-b-gray-200">
+    <header className="py-6 flex border-b border-b-gray-200" role="banner">
       <Link to={HOME_ROUTE} className="flex items-center">
         <img src={logo} className="mr-1" alt="Beers logo" />
         <h1 className="text-2xl font-semibold text-purple-700">Beers</h1>
